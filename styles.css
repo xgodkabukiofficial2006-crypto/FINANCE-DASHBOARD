@@ -1,0 +1,1008 @@
+/* ===================================
+   PREMIUM FINANCE DASHBOARD - STYLES
+   =================================== */
+
+:root {
+    --primary-color: #00d4ff;
+    --secondary-color: #7f5af0;
+    --dark-bg: #0a0e27;
+    --card-bg: #16213e;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --accent-green: #2ecc71;
+    --accent-red: #e74c3c;
+    --border-color: #1e3a5f;
+    --shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+    --shadow-hover: 0 12px 48px rgba(0, 212, 255, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #0d1b35 100%);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ===================================
+   NAVBAR STYLING
+   =================================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 14, 39, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    padding: 1rem 0;
+    box-shadow: var(--shadow);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.brand-icon {
+    font-size: 2rem;
+    animation: pulse 2s infinite;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 0.3rem;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+
+/* ===================================
+   ANIMATIONS
+   =================================== */
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(0, 212, 255, 0.5);
+    }
+}
+
+.fade-in {
+    animation: fade-in 0.8s ease-out;
+}
+
+.fade-in.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.slide-in {
+    animation: slide-in 0.8s ease-out;
+}
+
+.slide-in.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.slide-in.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.slide-in.delay-3 {
+    animation-delay: 0.6s;
+}
+
+/* ===================================
+   HERO SECTION
+   =================================== */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 80% 80%, rgba(127, 90, 240, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.hero-content h2 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.cta-button {
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    border: 2px solid var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
+}
+
+/* ===================================
+   MARKET SUMMARY
+   =================================== */
+
+.market-summary {
+    padding: 6rem 2rem;
+    background: var(--dark-bg);
+}
+
+.summary-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.summary-card {
+    background: linear-gradient(135deg, var(--card-bg), rgba(31, 58, 95, 0.5));
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.summary-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.1), transparent);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.summary-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.summary-card:hover::before {
+    opacity: 1;
+}
+
+.summary-card h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.status-value {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(127, 90, 240, 0.2);
+    border: 1px solid var(--secondary-color);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
+.status-badge.positive {
+    background: rgba(46, 204, 113, 0.2);
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+}
+
+/* ===================================
+   STOCKS SECTION
+   =================================== */
+
+.stocks-section,
+.crypto-section,
+.portfolio-section,
+.alerts-section {
+    padding: 6rem 2rem;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    animation: fade-in 0.8s ease-out;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+.stocks-container,
+.crypto-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.stock-card,
+.crypto-card {
+    background: linear-gradient(135deg, var(--card-bg), rgba(31, 58, 95, 0.5));
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.stock-card::before,
+.crypto-card::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.2), transparent);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.stock-card:hover,
+.crypto-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.stock-card:hover::before,
+.crypto-card:hover::before {
+    opacity: 1;
+    top: -50%;
+    left: -50%;
+}
+
+.stock-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.stock-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.ticker {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.stock-price {
+    text-align: right;
+}
+
+.price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.3rem;
+}
+
+.change {
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.3rem;
+}
+
+.change.positive {
+    color: var(--accent-green);
+}
+
+.change.negative {
+    color: var(--accent-red);
+}
+
+.stock-chart,
+.crypto-chart {
+    width: 100%;
+    height: 200px;
+    margin: 1.5rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.stock-details,
+.crypto-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.detail-row,
+.detail-item {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(0, 212, 255, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.detail-row:hover,
+.detail-item:hover {
+    background: rgba(0, 212, 255, 0.1);
+}
+
+.detail-row span,
+.detail-item span {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.detail-row strong,
+.detail-item strong {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+/* ===================================
+   CRYPTO HEADER
+   =================================== */
+
+.crypto-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.crypto-icon {
+    font-size: 2.5rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(127, 90, 240, 0.2));
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    animation: float 3s ease-in-out infinite;
+}
+
+.crypto-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.crypto-ticker {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.crypto-price {
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===================================
+   PORTFOLIO SECTION
+   =================================== */
+
+.portfolio-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.portfolio-chart-container {
+    background: linear-gradient(135deg, var(--card-bg), rgba(31, 58, 95, 0.5));
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+}
+
+.portfolio-chart {
+    width: 100%;
+    max-height: 400px;
+}
+
+.portfolio-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.stat-box {
+    background: linear-gradient(135deg, var(--card-bg), rgba(31, 58, 95, 0.5));
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.stat-box:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.stat-box h4 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-change,
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--accent-green);
+    font-weight: 600;
+}
+
+.holdings-table {
+    background: linear-gradient(135deg, var(--card-bg), rgba(31, 58, 95, 0.5));
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead {
+    background: rgba(0, 212, 255, 0.05);
+    border-bottom: 2px solid var(--border-color);
+}
+
+table th {
+    padding: 1.5rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+table td {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+table tbody tr {
+    transition: all 0.3s ease;
+}
+
+table tbody tr:hover {
+    background: rgba(0, 212, 255, 0.05);
+}
+
+table td.positive {
+    color: var(--accent-green);
+    font-weight: 600;
+}
+
+/* ===================================
+   ALERTS SECTION
+   =================================== */
+
+.alerts-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.alert-form,
+.active-alerts {
+    background: linear-gradient(135deg, var(--card-bg), rgba(31, 58, 95, 0.5));
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.alert-form h3,
+.active-alerts h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.form-group select,
+.form-group input {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(0, 212, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
+}
+
+.alert-item {
+    background: rgba(0, 212, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.alert-item:hover {
+    border-color: var(--primary-color);
+    background: rgba(0, 212, 255, 0.1);
+}
+
+.alert-content {
+    flex: 1;
+}
+
+.alert-title {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: var(--text-primary);
+}
+
+.alert-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.delete-btn {
+    background: rgba(231, 76, 60, 0.2);
+    border: 1px solid var(--accent-red);
+    color: var(--accent-red);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+    background: rgba(231, 76, 60, 0.3);
+    transform: scale(1.1);
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+
+.footer {
+    background: linear-gradient(135deg, rgba(10, 14, 39, 0.95), rgba(13, 27, 53, 0.95));
+    border-top: 1px solid var(--border-color);
+    padding: 4rem 2rem 2rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.footer-section p,
+.footer-section ul,
+.footer-section a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: var(--primary-color);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section li {
+    margin-bottom: 0.5rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ===================================
+   SCROLL ANIMATIONS
+   =================================== */
+
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.scroll-animate.visible {
+    animation: fade-in 0.8s ease-out forwards;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .stocks-container,
+    .crypto-container {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stock-details,
+    .crypto-details {
+        grid-template-columns: 1fr;
+    }
+
+    .alerts-container {
+        grid-template-columns: 1fr;
+    }
+
+    table {
+        font-size: 0.85rem;
+    }
+
+    table th,
+    table td {
+        padding: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-brand h1 {
+        display: none;
+    }
+
+    .hero-content {
+        padding: 1rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .summary-container {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-button {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+
+    .stocks-section,
+    .crypto-section,
+    .portfolio-section,
+    .alerts-section {
+        padding: 3rem 1rem;
+    }
+}
+
+/* ===================================
+   SCROLLBAR STYLING
+   =================================== */
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+}
