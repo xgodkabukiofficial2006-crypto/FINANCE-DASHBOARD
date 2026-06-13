@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Finance Dashboard - Live Trading & Crypto</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">📊</span>
+                <h1>FinanceHub</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="#stocks" class="nav-link">Stocks</a></li>
+                <li><a href="#crypto" class="nav-link">Crypto</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#alerts" class="nav-link">Alerts</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="dashboard">
+        <div class="hero-content">
+            <h2 class="fade-in">Real-Time Financial Intelligence</h2>
+            <p class="fade-in delay-1">Monitor stocks, cryptocurrencies, and build your investment portfolio with live data</p>
+            <button class="cta-button">Get Started</button>
+        </div>
+        <div class="hero-gradient"></div>
+    </section>
+
+    <!-- Market Summary -->
+    <section class="market-summary">
+        <div class="summary-container">
+            <div class="summary-card slide-in">
+                <h3>Market Status</h3>
+                <p class="status-value">Open</p>
+                <span class="status-badge">Live</span>
+            </div>
+            <div class="summary-card slide-in delay-1">
+                <h3>Global Markets</h3>
+                <p class="status-value">$95.4T</p>
+                <span class="status-badge">+2.5%</span>
+            </div>
+            <div class="summary-card slide-in delay-2">
+                <h3>Crypto Market</h3>
+                <p class="status-value">$2.1T</p>
+                <span class="status-badge">+5.8%</span>
+            </div>
+            <div class="summary-card slide-in delay-3">
+                <h3>Your Portfolio</h3>
+                <p class="status-value">$45,230</p>
+                <span class="status-badge positive">+12.3%</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stocks Section -->
+    <section class="stocks-section" id="stocks">
+        <div class="section-header">
+            <h2 class="section-title">Top Performing Stocks</h2>
+            <p class="section-subtitle">Major corporations and their performance metrics</p>
+        </div>
+
+        <div class="stocks-container">
+            <!-- Stock Card Template -->
+            <div class="stock-card">
+                <div class="stock-header">
+                    <div class="stock-info">
+                        <h3>Apple Inc.</h3>
+                        <p class="ticker">AAPL</p>
+                    </div>
+                    <div class="stock-price">
+                        <p class="price">$185.32</p>
+                        <p class="change positive">+2.45% <span>📈</span></p>
+                    </div>
+                </div>
+                <canvas id="appleChart" class="stock-chart"></canvas>
+                <div class="stock-details">
+                    <div class="detail-row">
+                        <span>Market Cap</span>
+                        <strong>$2.89T</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>52W High</span>
+                        <strong>$195.87</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Profit</span>
+                        <strong>+$94.7B</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Microsoft -->
+            <div class="stock-card">
+                <div class="stock-header">
+                    <div class="stock-info">
+                        <h3>Microsoft Corp.</h3>
+                        <p class="ticker">MSFT</p>
+                    </div>
+                    <div class="stock-price">
+                        <p class="price">$428.67</p>
+                        <p class="change positive">+3.12% <span>📈</span></p>
+                    </div>
+                </div>
+                <canvas id="msftChart" class="stock-chart"></canvas>
+                <div class="stock-details">
+                    <div class="detail-row">
+                        <span>Market Cap</span>
+                        <strong>$3.19T</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>52W High</span>
+                        <strong>$445.23</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Profit</span>
+                        <strong>+$88.1B</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tesla -->
+            <div class="stock-card">
+                <div class="stock-header">
+                    <div class="stock-info">
+                        <h3>Tesla Inc.</h3>
+                        <p class="ticker">TSLA</p>
+                    </div>
+                    <div class="stock-price">
+                        <p class="price">$242.84</p>
+                        <p class="change positive">+5.67% <span>📈</span></p>
+                    </div>
+                </div>
+                <canvas id="tslaChart" class="stock-chart"></canvas>
+                <div class="stock-details">
+                    <div class="detail-row">
+                        <span>Market Cap</span>
+                        <strong>$768.3B</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>52W High</span>
+                        <strong>$278.45</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Profit</span>
+                        <strong>+$16.9B</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Google/Alphabet -->
+            <div class="stock-card">
+                <div class="stock-header">
+                    <div class="stock-info">
+                        <h3>Alphabet Inc.</h3>
+                        <p class="ticker">GOOGL</p>
+                    </div>
+                    <div class="stock-price">
+                        <p class="price">$195.42</p>
+                        <p class="change positive">+4.23% <span>📈</span></p>
+                    </div>
+                </div>
+                <canvas id="googChart" class="stock-chart"></canvas>
+                <div class="stock-details">
+                    <div class="detail-row">
+                        <span>Market Cap</span>
+                        <strong>$1.92T</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>52W High</span>
+                        <strong>$210.87</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Profit</span>
+                        <strong>+$76.3B</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Amazon -->
+            <div class="stock-card">
+                <div class="stock-header">
+                    <div class="stock-info">
+                        <h3>Amazon.com Inc.</h3>
+                        <p class="ticker">AMZN</p>
+                    </div>
+                    <div class="stock-price">
+                        <p class="price">$189.56</p>
+                        <p class="change positive">+2.89% <span>📈</span></p>
+                    </div>
+                </div>
+                <canvas id="amznChart" class="stock-chart"></canvas>
+                <div class="stock-details">
+                    <div class="detail-row">
+                        <span>Market Cap</span>
+                        <strong>$1.97T</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>52W High</span>
+                        <strong>$201.23</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Profit</span>
+                        <strong>+$30.1B</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meta/Facebook -->
+            <div class="stock-card">
+                <div class="stock-header">
+                    <div class="stock-info">
+                        <h3>Meta Platforms</h3>
+                        <p class="ticker">META</p>
+                    </div>
+                    <div class="stock-price">
+                        <p class="price">$516.23</p>
+                        <p class="change positive">+6.45% <span>📈</span></p>
+                    </div>
+                </div>
+                <canvas id="metaChart" class="stock-chart"></canvas>
+                <div class="stock-details">
+                    <div class="detail-row">
+                        <span>Market Cap</span>
+                        <strong>$1.58T</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>52W High</span>
+                        <strong>$545.67</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Profit</span>
+                        <strong>+$23.2B</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cryptocurrency Section -->
+    <section class="crypto-section" id="crypto">
+        <div class="section-header">
+            <h2 class="section-title">Cryptocurrency Market</h2>
+            <p class="section-subtitle">Real-time crypto rates and performance</p>
+        </div>
+
+        <div class="crypto-container">
+            <!-- Bitcoin -->
+            <div class="crypto-card">
+                <div class="crypto-header">
+                    <div class="crypto-icon">₿</div>
+                    <div class="crypto-info">
+                        <h3>Bitcoin</h3>
+                        <p class="crypto-ticker">BTC</p>
+                    </div>
+                </div>
+                <div class="crypto-price">
+                    <p class="price">$67,234</p>
+                    <p class="change positive">+8.45%</p>
+                </div>
+                <canvas id="btcChart" class="crypto-chart"></canvas>
+                <div class="crypto-details">
+                    <div class="detail-item">
+                        <span>Market Cap</span>
+                        <strong>$1.32T</strong>
+                    </div>
+                    <div class="detail-item">
+                        <span>24h Volume</span>
+                        <strong>$28.4B</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ethereum -->
+            <div class="crypto-card">
+                <div class="crypto-header">
+                    <div class="crypto-icon">Ξ</div>
+                    <div class="crypto-info">
+                        <h3>Ethereum</h3>
+                        <p class="crypto-ticker">ETH</p>
+                    </div>
+                </div>
+                <div class="crypto-price">
+                    <p class="price">$3,521</p>
+                    <p class="change positive">+12.34%</p>
+                </div>
+                <canvas id="ethChart" class="crypto-chart"></canvas>
+                <div class="crypto-details">
+                    <div class="detail-item">
+                        <span>Market Cap</span>
+                        <strong>$423.1B</strong>
+                    </div>
+                    <div class="detail-item">
+                        <span>24h Volume</span>
+                        <strong>$15.8B</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Solana -->
+            <div class="crypto-card">
+                <div class="crypto-header">
+                    <div class="crypto-icon">◆</div>
+                    <div class="crypto-info">
+                        <h3>Solana</h3>
+                        <p class="crypto-ticker">SOL</p>
+                    </div>
+                </div>
+                <div class="crypto-price">
+                    <p class="price">$178.45</p>
+                    <p class="change positive">+15.23%</p>
+                </div>
+                <canvas id="solChart" class="crypto-chart"></canvas>
+                <div class="crypto-details">
+                    <div class="detail-item">
+                        <span>Market Cap</span>
+                        <strong>$78.2B</strong>
+                    </div>
+                    <div class="detail-item">
+                        <span>24h Volume</span>
+                        <strong>$4.2B</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cardano -->
+            <div class="crypto-card">
+                <div class="crypto-header">
+                    <div class="crypto-icon">₳</div>
+                    <div class="crypto-info">
+                        <h3>Cardano</h3>
+                        <p class="crypto-ticker">ADA</p>
+                    </div>
+                </div>
+                <div class="crypto-price">
+                    <p class="price">$0.98</p>
+                    <p class="change positive">+11.67%</p>
+                </div>
+                <canvas id="adaChart" class="crypto-chart"></canvas>
+                <div class="crypto-details">
+                    <div class="detail-item">
+                        <span>Market Cap</span>
+                        <strong>$35.2B</strong>
+                    </div>
+                    <div class="detail-item">
+                        <span>24h Volume</span>
+                        <strong>$1.8B</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ripple -->
+            <div class="crypto-card">
+                <div class="crypto-header">
+                    <div class="crypto-icon">✕</div>
+                    <div class="crypto-info">
+                        <h3>Ripple</h3>
+                        <p class="crypto-ticker">XRP</p>
+                    </div>
+                </div>
+                <div class="crypto-price">
+                    <p class="price">$2.45</p>
+                    <p class="change positive">+9.23%</p>
+                </div>
+                <canvas id="xrpChart" class="crypto-chart"></canvas>
+                <div class="crypto-details">
+                    <div class="detail-item">
+                        <span>Market Cap</span>
+                        <strong>$134.8B</strong>
+                    </div>
+                    <div class="detail-item">
+                        <span>24h Volume</span>
+                        <strong>$5.2B</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Polygon -->
+            <div class="crypto-card">
+                <div class="crypto-header">
+                    <div class="crypto-icon">⬠</div>
+                    <div class="crypto-info">
+                        <h3>Polygon</h3>
+                        <p class="crypto-ticker">MATIC</p>
+                    </div>
+                </div>
+                <div class="crypto-price">
+                    <p class="price">$0.74</p>
+                    <p class="change positive">+13.45%</p>
+                </div>
+                <canvas id="maticChart" class="crypto-chart"></canvas>
+                <div class="crypto-details">
+                    <div class="detail-item">
+                        <span>Market Cap</span>
+                        <strong>$7.1B</strong>
+                    </div>
+                    <div class="detail-item">
+                        <span>24h Volume</span>
+                        <strong>$0.9B</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section" id="portfolio">
+        <div class="section-header">
+            <h2 class="section-title">Your Portfolio</h2>
+            <p class="section-subtitle">Track your investments and performance</p>
+        </div>
+
+        <div class="portfolio-content">
+            <div class="portfolio-chart-container">
+                <canvas id="portfolioChart" class="portfolio-chart"></canvas>
+            </div>
+
+            <div class="portfolio-stats">
+                <div class="stat-box">
+                    <h4>Total Value</h4>
+                    <p class="stat-value">$125,450.50</p>
+                    <span class="stat-change positive">+18.5%</span>
+                </div>
+                <div class="stat-box">
+                    <h4>Today's Gain</h4>
+                    <p class="stat-value">+$2,345.80</p>
+                    <span class="stat-change positive">+1.9%</span>
+                </div>
+                <div class="stat-box">
+                    <h4>Stocks</h4>
+                    <p class="stat-value">$75,230</p>
+                    <span class="stat-label">60% of portfolio</span>
+                </div>
+                <div class="stat-box">
+                    <h4>Crypto</h4>
+                    <p class="stat-value">$50,220.50</p>
+                    <span class="stat-label">40% of portfolio</span>
+                </div>
+            </div>
+
+            <div class="holdings-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Asset</th>
+                            <th>Ticker</th>
+                            <th>Quantity</th>
+                            <th>Entry Price</th>
+                            <th>Current Price</th>
+                            <th>Total Value</th>
+                            <th>Gain/Loss</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Apple Inc.</td>
+                            <td>AAPL</td>
+                            <td>50</td>
+                            <td>$162.45</td>
+                            <td>$185.32</td>
+                            <td>$9,266</td>
+                            <td class="positive">+$1,143.50 (+14%)</td>
+                        </tr>
+                        <tr>
+                            <td>Bitcoin</td>
+                            <td>BTC</td>
+                            <td>0.85</td>
+                            <td>$42,200</td>
+                            <td>$67,234</td>
+                            <td>$57,148.90</td>
+                            <td class="positive">+$21,278.90 (+59%)</td>
+                        </tr>
+                        <tr>
+                            <td>Ethereum</td>
+                            <td>ETH</td>
+                            <td>5.2</td>
+                            <td>$2,100</td>
+                            <td>$3,521</td>
+                            <td>$18,309.20</td>
+                            <td class="positive">+$7,348.20 (+67%)</td>
+                        </tr>
+                        <tr>
+                            <td>Microsoft Corp.</td>
+                            <td>MSFT</td>
+                            <td>25</td>
+                            <td>$380.50</td>
+                            <td>$428.67</td>
+                            <td>$10,716.75</td>
+                            <td class="positive">+$1,204.25 (+12.6%)</td>
+                        </tr>
+                        <tr>
+                            <td>Tesla Inc.</td>
+                            <td>TSLA</td>
+                            <td>15</td>
+                            <td>$210.60</td>
+                            <td>$242.84</td>
+                            <td>$3,642.60</td>
+                            <td class="positive">+$483.60 (+15.3%)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alerts Section -->
+    <section class="alerts-section" id="alerts">
+        <div class="section-header">
+            <h2 class="section-title">Price Alerts</h2>
+            <p class="section-subtitle">Set and manage your price alerts</p>
+        </div>
+
+        <div class="alerts-container">
+            <div class="alert-form">
+                <h3>Create New Alert</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="assetSelect">Select Asset</label>
+                        <select id="assetSelect">
+                            <option>Bitcoin (BTC)</option>
+                            <option>Ethereum (ETH)</option>
+                            <option>Apple (AAPL)</option>
+                            <option>Microsoft (MSFT)</option>
+                            <option>Tesla (TSLA)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="alertType">Alert Type</label>
+                        <select id="alertType">
+                            <option>Price Above</option>
+                            <option>Price Below</option>
+                            <option>Percentage Change</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="alertValue">Alert Value</label>
+                        <input type="number" id="alertValue" placeholder="Enter value">
+                    </div>
+                    <button type="submit" class="submit-btn">Create Alert</button>
+                </form>
+            </div>
+
+            <div class="active-alerts">
+                <h3>Active Alerts</h3>
+                <div class="alert-item">
+                    <div class="alert-content">
+                        <p class="alert-title">Bitcoin reaches $70,000</p>
+                        <p class="alert-subtitle">Alert when BTC > $70,000</p>
+                    </div>
+                    <button class="delete-btn">✕</button>
+                </div>
+                <div class="alert-item">
+                    <div class="alert-content">
+                        <p class="alert-title">Ethereum rises 20%</p>
+                        <p class="alert-subtitle">Alert on +20% change</p>
+                    </div>
+                    <button class="delete-btn">✕</button>
+                </div>
+                <div class="alert-item">
+                    <div class="alert-content">
+                        <p class="alert-title">Apple stock below $180</p>
+                        <p class="alert-subtitle">Alert when AAPL < $180</p>
+                    </div>
+                    <button class="delete-btn">✕</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>FinanceHub</h4>
+                <p>Your premium financial intelligence platform for stocks and crypto.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#stocks">Stocks</a></li>
+                    <li><a href="#crypto">Crypto</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#">Twitter</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 FinanceHub. All rights reserved. Disclaimer: Not financial advice.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
